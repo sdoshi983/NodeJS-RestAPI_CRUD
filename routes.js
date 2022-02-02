@@ -10,15 +10,10 @@ router.get('/get/material', async (request, response) => {
     response.send(data);
 });
 
-router.post('/post/material', (request, response) => {
-    // const material = new MaterialMaster({
-    //     modelName: request.body.modelName,
-    //     gradeName: request.body.gradeName,
-    //     diameter: request.body.diameter
-    // });
-    // await material.save();
-    // response.send(material);
-    response.send("hello");
+router.post('/post/material', async (request, response) => {
+    const material = new MaterialMaster(request.body)
+    await material.save();
+    response.send(material);
 })
 // --------
 
