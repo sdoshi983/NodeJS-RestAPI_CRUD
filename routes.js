@@ -5,12 +5,12 @@ const MaterialMaster = require('./models/materialMaster');
 const ChemicalMaster = require('./models/chemicalMaster');
 
 // material master
-router.get('/get/material', async (request, response) => {
+router.get('/material', async (request, response) => {  // fetch
     const data = await MaterialMaster.find();
     response.send(data);
 });
 
-router.post('/post/material', async (request, response) => {
+router.post('/material', async (request, response) => {    // insert
     const material = new MaterialMaster(request.body)
     await material.save();
     response.send(material);
@@ -18,12 +18,12 @@ router.post('/post/material', async (request, response) => {
 // --------
 
 // chemical master
-router.get('/get/chemical', async (request, response) => {
+router.get('/chemical', async (request, response) => {  // fetch
     const data = await ChemicalMaster.find();
     response.send(data);
 });
 
-router.post('/post/chemical', async (request, response) => {
+router.post('/chemical', async (request, response) => {    // insert
     const chemical = new ChemicalMaster(request.body)
     chemical.save();
     response.send(chemical);
