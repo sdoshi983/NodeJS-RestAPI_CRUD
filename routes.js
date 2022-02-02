@@ -3,6 +3,7 @@ const router = express.Router();
 
 const MaterialMaster = require('./models/materialMaster');
 const ChemicalMaster = require('./models/chemicalMaster');
+const req = require('express/lib/request');
 
 // material master
 router.get('/material', async (request, response) => {  // fetch
@@ -14,6 +15,13 @@ router.post('/material', async (request, response) => {    // insert
     const material = new MaterialMaster(request.body)
     await material.save();
     response.send(material);
+})
+
+router.patch('/material/:id', async (request, response) => {
+    const _id = request.params.id;
+    const material = await MaterialMaster.findByIdAndUpdate(_id, request.body, {new: true});
+    response.send(material);
+
 })
 // --------
 
