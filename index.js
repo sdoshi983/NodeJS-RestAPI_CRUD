@@ -16,6 +16,10 @@ mongoose.connect(uri, {useNewUrlParser: true}).then(() => { // if connected succ
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(routes);
 
+    app.get('/', (request, response) => {
+        response.sendFile('index.html',{root:__dirname});
+    })
+    
     app.listen(port, () => {    // starting server
         console.log('server started');
     });
