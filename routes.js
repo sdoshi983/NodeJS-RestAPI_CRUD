@@ -17,11 +17,10 @@ router.post('/material', async (request, response) => {    // insert
     response.send(material);
 })
 
-router.patch('/material/:id', async (request, response) => {
+router.patch('/material/:id', async (request, response) => {    // update
     const _id = request.params.id;
     const material = await MaterialMaster.findByIdAndUpdate(_id, request.body, {new: true});
     response.send(material);
-
 })
 // --------
 
@@ -37,4 +36,9 @@ router.post('/chemical', async (request, response) => {    // insert
     response.send(chemical);
 })
 
+router.patch('/chemical/:id', async (request, response) => {
+    const _id = request.params.id;
+    const chemical = await ChemicalMaster.findByIdAndUpdate(_id, request.body, {new: true});
+    response.send(chemical);
+})
 module.exports = router;
