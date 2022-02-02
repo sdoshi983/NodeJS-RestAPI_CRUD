@@ -22,6 +22,16 @@ router.patch('/material/:id', async (request, response) => {    // update
     const material = await MaterialMaster.findByIdAndUpdate(_id, request.body, {new: true});
     response.send(material);
 })
+
+router.delete('/material/:id', async (request, response) => {
+    try{
+        const _id = request.params.id;
+        const material = await MaterialMaster.findByIdAndRemove(_id);
+        response.send(material);
+    }catch (e){
+        response.send(e);
+    }
+})
 // --------
 
 // chemical master
@@ -36,7 +46,7 @@ router.post('/chemical', async (request, response) => {    // insert
     response.send(chemical);
 })
 
-router.patch('/chemical/:id', async (request, response) => {
+router.patch('/chemical/:id', async (request, response) => {    // update
     const _id = request.params.id;
     const chemical = await ChemicalMaster.findByIdAndUpdate(_id, request.body, {new: true});
     response.send(chemical);
