@@ -23,10 +23,10 @@ router.patch('/material/:id', async (request, response) => {    // update
     response.send(material);
 })
 
-router.delete('/material/:id', async (request, response) => {
+router.delete('/material/:id', async (request, response) => {   // delete
     try{
         const _id = request.params.id;
-        const material = await MaterialMaster.findByIdAndRemove(_id);
+        const material = await MaterialMaster.findByIdAndDelete(_id);
         response.send(material);
     }catch (e){
         response.send(e);
@@ -49,6 +49,12 @@ router.post('/chemical', async (request, response) => {    // insert
 router.patch('/chemical/:id', async (request, response) => {    // update
     const _id = request.params.id;
     const chemical = await ChemicalMaster.findByIdAndUpdate(_id, request.body, {new: true});
+    response.send(chemical);
+})
+
+router.delete('/chemical/:id', async (request, response) => {
+    const _id = request.params.id;
+    const chemical = await ChemicalMaster.findByIdAndDelete(_id);
     response.send(chemical);
 })
 module.exports = router;
