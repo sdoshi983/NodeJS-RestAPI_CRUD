@@ -5,4 +5,4 @@ const materialSchema = mongoose.Schema({
     diameter: Number,
 });
 
-module.exports = mongoose.model('material', materialSchema);
+module.exports = mongoose.model('Material', materialSchema);

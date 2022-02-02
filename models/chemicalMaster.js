@@ -5,4 +5,4 @@ const chemicalSchema = mongoose.Schema({
     carbon: Number,
 });
 
-module.exports = mongoose.model('chemical', chemicalSchema);
+module.exports = mongoose.model('Chemical', chemicalSchema);

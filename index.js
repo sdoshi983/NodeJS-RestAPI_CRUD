@@ -6,7 +6,7 @@ const routes = require("./routes");
 
 const uri = "mongodb+srv://sd:sdoshi983@cluster0.0nb30.mongodb.net/industryMasters?retryWrites=true&w=majority";
 const local = 'mongodb://localhost:27017/industryMasters';
-mongoose.connect(local, {useNewUrlParser: true}).then(() => { // if connected successfully
+mongoose.connect(uri, {useNewUrlParser: true}).then(() => { // if connected successfully
     console.log('db connected ..'); 
 
     const app = express(); // initializing our app
