@@ -25,6 +25,7 @@ router.get('/get/chemical', async (request, response) => {
 
 router.post('/post/chemical', async (request, response) => {
     const chemical = new ChemicalMaster(request.body)
+    chemical.save();
     response.send(chemical);
 })
 
