@@ -29,7 +29,12 @@ router.patch('/material/:id', async (request, response) => {    // update
     response.send(material);
 })
 
-router.delete('/material/:id', async (request, response) => {   // delete
+router.delete('/material', async (request, response) => {  // delete
+    const data = await MaterialMaster.deleteMany({});
+    response.send(data);
+});
+
+router.delete('/material/:id', async (request, response) => {   // delete by id
     try{
         const _id = request.params.id;
         const material = await MaterialMaster.findByIdAndDelete(_id);
