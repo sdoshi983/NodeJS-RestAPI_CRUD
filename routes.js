@@ -69,7 +69,12 @@ router.patch('/chemical/:id', async (request, response) => {    // update
     response.send(chemical);
 })
 
-router.delete('/chemical/:id', async (request, response) => {
+router.delete('/chemical', async (request, response) => {  // delete
+    const data = await ChemicalMaster.deleteMany({});
+    response.send(data);
+});
+
+router.delete('/chemical/:id', async (request, response) => {   // delete by id
     const _id = request.params.id;
     const chemical = await ChemicalMaster.findByIdAndDelete(_id);
     response.send(chemical);
