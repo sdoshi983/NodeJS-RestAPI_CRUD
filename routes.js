@@ -46,6 +46,12 @@ router.get('/chemical', async (request, response) => {  // fetch
     response.send(data);
 });
 
+router.get('/chemical/:id', async (request, response) => {  // fetch by id
+    const _id = request.params.id;
+    const data = await ChemicalMaster.findById(_id);
+    response.send(data);
+});
+
 router.post('/chemical', async (request, response) => {    // insert
     const chemical = new ChemicalMaster(request.body)
     chemical.save();
