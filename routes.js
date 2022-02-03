@@ -11,6 +11,12 @@ router.get('/material', async (request, response) => {  // fetch
     response.send(data);
 });
 
+router.get('/material/:id', async (request, response) => {  // fetch by id
+    const _id = request.params.id;
+    const data = await MaterialMaster.findById(_id);
+    response.send(data);
+});
+
 router.post('/material', async (request, response) => {    // insert
     const material = new MaterialMaster(request.body)
     await material.save();
